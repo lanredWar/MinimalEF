@@ -4,12 +4,17 @@ using MinimalEF.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddDbContext<TareasContext>(p => p.UseInMemoryDatabase("TareasDB"));
+//Conexion a base de datos en memoria para asegurar posteriormente la conexion con una base real
+//builder.Services.AddDbContext<TareasContext>(p => p.UseInMemoryDatabase("TareasDB"));
+
+//Servicio que se va conectar a SQL
+builder.Services.AddSqlServer<TareasContext>("Data Source=localhost;Initial Catalog=TareasDb;user id=sa;password= AquivaElPwd;TrustServerCertificate=True");
 
 var app = builder.Build();
 
 app.MapGet("/", () => "Hello World!");
 
+//Se agrega Enpoint para verificar la creacion de la base de atos en memoria con el contexto 
 app.MapGet("/dbconexion", async ([FromServices] TareasContext dbContext) =>
 {
     dbContext.Database.EnsureCreated();
