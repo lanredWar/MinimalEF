@@ -64,3 +64,8 @@ C:\Users\dra_l\Platzi\Minimal EF\obj\Debug\net7.0\refint\Minimal EF.dll
 C:\Users\dra_l\Platzi\Minimal EF\obj\Debug\net7.0\Minimal EF.pdb
 C:\Users\dra_l\Platzi\Minimal EF\obj\Debug\net7.0\Minimal EF.genruntimeconfig.cache
 C:\Users\dra_l\Platzi\Minimal EF\obj\Debug\net7.0\ref\Minimal EF.dll
+C:\Users\dra_l\Platzi\Minimal EF\bin\Debug\net7.0\Humanizer.dll
+C:\Users\dra_l\Platzi\Minimal EF\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\dra_l\Platzi\Minimal EF\bin\Debug\net7.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\dra_l\Platzi\Minimal EF\bin\Debug\net7.0\Mono.TextTemplating.dll
+C:\Users\dra_l\Platzi\Minimal EF\bin\Debug\net7.0\System.CodeDom.dll
