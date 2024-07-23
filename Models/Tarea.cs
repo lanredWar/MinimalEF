@@ -20,6 +20,7 @@ public class Tarea
     
     // [NotMapped]
     public string Resumen { get; set; }
+    public string? Secuencia { get; set; }
 }
 public enum Prioridad
 {

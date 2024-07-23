@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MinimalEF.Models;
 
@@ -11,9 +12,11 @@ using MinimalEF.Models;
 namespace MinimalEF.Migrations
 {
     [DbContext(typeof(TareasContext))]
-    partial class TareasContextModelSnapshot : ModelSnapshot
+    [Migration("20240723191913_ColumnPesoTableCategoria")]
+    partial class ColumnPesoTableCategoria
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -29,6 +32,7 @@ namespace MinimalEF.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Descripcion")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Nombre")
@@ -42,20 +46,6 @@ namespace MinimalEF.Migrations
                     b.HasKey("CategoriaId");
 
                     b.ToTable("Categoria", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            CategoriaId = new Guid("588afe2f-48ba-4051-8c09-ff756b1c151f"),
-                            Nombre = "Actividades Pendientes",
-                            Peso = 20
-                        },
-                        new
-                        {
-                            CategoriaId = new Guid("588afe2f-48ba-4051-8c08-ff756b1c159e"),
-                            Nombre = "Actividades Personales",
-                            Peso = 50
-                        });
                 });
 
             modelBuilder.Entity("MinimalEF.Models.Tarea", b =>
@@ -68,6 +58,7 @@ namespace MinimalEF.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Descripcion")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("FechaCreacion")
@@ -75,9 +66,6 @@ namespace MinimalEF.Migrations
 
                     b.Property<int>("PrioridadTarea")
                         .HasColumnType("int");
-
-                    b.Property<string>("Secuencia")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Titulo")
                         .IsRequired()
@@ -89,24 +77,6 @@ namespace MinimalEF.Migrations
                     b.HasIndex("CategoriaId");
 
                     b.ToTable("Tarea", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            TareaId = new Guid("588afe2f-48ba-3000-8c09-ff756b1c151f"),
-                            CategoriaId = new Guid("588afe2f-48ba-4051-8c09-ff756b1c151f"),
-                            FechaCreacion = new DateTime(2024, 7, 23, 15, 37, 53, 741, DateTimeKind.Local).AddTicks(6807),
-                            PrioridadTarea = 1,
-                            Titulo = "Pago de servicios publicos"
-                        },
-                        new
-                        {
-                            TareaId = new Guid("588afe2f-48ba-4000-8c08-ff756b1c159e"),
-                            CategoriaId = new Guid("588afe2f-48ba-4051-8c08-ff756b1c159e"),
-                            FechaCreacion = new DateTime(2024, 7, 23, 15, 37, 53, 741, DateTimeKind.Local).AddTicks(6826),
-                            PrioridadTarea = 0,
-                            Titulo = "Terminar de ver peliculas en Netflix"
-                        });
                 });
 
             modelBuilder.Entity("MinimalEF.Models.Tarea", b =>
