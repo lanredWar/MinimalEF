@@ -23,7 +23,20 @@ app.MapGet("/dbconexion", async ([FromServices] TareasContext dbContext) =>
 
 app.MapGet("/api/tareas", async([FromServices] TareasContext dbContext) =>
 {
-    return Results.Ok(dbContext.Tareas.Include(p=> p.Categoria).Where(p=> p.PrioridadTarea == Prioridad.Baja));
+    return Results.Ok(dbContext.Tareas.Include(p=> p.Categoria));
+});
+
+app.MapPost("/api/tareas", async([FromServices] TareasContext dbContext, [FromBody] Tarea tarea) =>
+{
+    tarea.TareaId = Guid.NewGuid();
+    tarea.FechaCreacion = DateTime.Now;
+    //Formas para agregar el registro
+    await dbContext.AddAsync(tarea);
+    //Forma #2 para agregar un registro await dbContext.Tareas.AddAsync(tarea);
+
+    //forma para salvar/guardar el registro
+    await dbContext.SaveChangesAsync();
+    return Results.Ok();
 });
 
 app.Run();
